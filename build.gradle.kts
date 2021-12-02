@@ -1,5 +1,6 @@
 plugins {
     java
+    idea
 }
 
 group = "me.dietenberger"
@@ -16,6 +17,6 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
-tasks.getByName<Test>("test") {
+tasks.named<Test>("test") {
     useJUnitPlatform()
 }
