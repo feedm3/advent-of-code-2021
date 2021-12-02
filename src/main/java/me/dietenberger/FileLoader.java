@@ -1,5 +1,7 @@
 package me.dietenberger;
 
+import com.google.common.collect.Lists;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -18,6 +20,15 @@ public class FileLoader {
         } catch (IOException e) {
             System.out.println("File not found! " + e.getMessage());
         }
-        return new ArrayList<>();
+        return Lists.newArrayList();
+    }
+
+    public static List<String> getLinesFromInput(final String fileName) {
+        try {
+            return Files.readAllLines(Paths.get("src/main/resources/" + fileName));
+        } catch (IOException e) {
+            System.out.println("File not found! " + e.getMessage());
+        }
+        return Lists.newArrayList();
     }
 }

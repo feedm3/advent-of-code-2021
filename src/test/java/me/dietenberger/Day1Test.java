@@ -17,11 +17,13 @@ public class Day1Test {
 
         // when
         int introNumberIncreases = day1.calculateIncreases(INTRO_NUMBERS);
-        int fileNumberIncreases = day1.calculateIncreases(INPUT_FILE_NUMBERS);
 
         // then
         assertEquals(introNumberIncreases, 7);
-        assertEquals(fileNumberIncreases, 1451);
+
+        // solution
+        int fileNumberIncreases = day1.calculateIncreases(INPUT_FILE_NUMBERS);
+        System.out.println("Result Day 1 - Part 1: " + fileNumberIncreases);
     }
 
     @Test
@@ -31,10 +33,12 @@ public class Day1Test {
 
         // when
         int introNumberIncreases = day1.calculateSlidingWindowIncreases(INTRO_NUMBERS);
-        int fileNumberIncreases = day1.calculateSlidingWindowIncreases(INPUT_FILE_NUMBERS);
 
         // then
         assertEquals(introNumberIncreases, 5);
-        assertEquals(fileNumberIncreases, 1395);
+
+        // solution
+        int fileNumberIncreases = day1.calculateSlidingWindowIncreases(INPUT_FILE_NUMBERS);
+        System.out.println("Result Day 1 - Part 2: " + fileNumberIncreases);
     }
 }
