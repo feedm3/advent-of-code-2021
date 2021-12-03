@@ -48,27 +48,28 @@ public class Day3 {
         final List<String> binariesStore = new ArrayList<>(binaries);
 
         // max amount of iterations is the amount of positions
-        IntStream.range(0, positions).forEach(position -> {
-            // as soon as there is only 1 entry, we finish iterating
-            if (binariesStore.size() == 1) {
-                return;
-            }
+        IntStream.range(0, positions)
+                .forEach(position -> {
+                    // as soon as there is only 1 entry, we finish iterating
+                    if (binariesStore.size() == 1) {
+                        return;
+                    }
 
-            // we need to know which is the most common binary
-            final String mostCommonBinaries = getMostCommonBinaryPerPosition(binariesStore);
+                    // we need to know which is the most common binary
+                    final String mostCommonBinaries = getMostCommonBinaryPerPosition(binariesStore);
 
-            // if we want to search for the least common one, we invert the binary
-            final String commonBinaries = quantity == Quantity.MOST ? mostCommonBinaries : invertBinary(mostCommonBinaries);
+                    // if we want to search for the least common one, we invert the binary
+                    final String commonBinaries = quantity == Quantity.MOST ? mostCommonBinaries : invertBinary(mostCommonBinaries);
 
-            // now we filter for the most/least common binary
-            final List<String> binariesForPosition = binariesStore.stream()
-                    .filter(line -> line.charAt(position) == commonBinaries.charAt(position))
-                    .collect(Collectors.toList());
+                    // now we filter for the most/least common binary
+                    final List<String> binariesForPosition = binariesStore.stream()
+                            .filter(line -> line.charAt(position) == commonBinaries.charAt(position))
+                            .collect(Collectors.toList());
 
-            // and save it within our store to use it for the next iteration
-            binariesStore.clear();
-            binariesStore.addAll(binariesForPosition);
-        });
+                    // and save it within our store to use it for the next iteration
+                    binariesStore.clear();
+                    binariesStore.addAll(binariesForPosition);
+                });
         return binariesStore.get(0);
     }
 
