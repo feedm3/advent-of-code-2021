@@ -32,7 +32,7 @@ public class Day2Test {
         assertEquals(15, horizontal);
         assertEquals(10, depth);
 
-        // print result
+        // solution
         final List<ImmutablePair<Day2.Command, Integer>> fileCommands = day2.parseCommands(INPUT_FILE_COMMANDS);
 
         final int solutionHorizontal =  day2.calculateHorizontal(fileCommands);

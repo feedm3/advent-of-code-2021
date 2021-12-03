@@ -34,7 +34,7 @@ public class Day4Test {
         // then
 
 
-        // print result
+        // solution
         System.out.println("Result Day 4 - Part 1: ");
     }
 

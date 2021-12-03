@@ -43,7 +43,7 @@ public class Day3Test {
         assertEquals(9, epsilonRate);
         assertEquals(198, powerConsumption);
 
-        // print result
+        // solution
         final String mostCommonBinariesPerPositionSolution = day3.getMostCommonBinaryPerPosition(INPUT_FILE_BINARY);
         final int gammaRateSolution = day3.parseBinary(mostCommonBinariesPerPositionSolution);
         final String epsilonBinarySolution = day3.invertBinary(mostCommonBinariesPerPositionSolution);
