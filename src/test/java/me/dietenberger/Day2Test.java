@@ -1,8 +1,8 @@
 package me.dietenberger;
 
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.junit.jupiter.api.Test;
 
-import java.util.AbstractMap;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,7 +22,7 @@ public class Day2Test {
     void partOne() {
         // given
         final Day2 day2 = new Day2();
-        final List<AbstractMap.SimpleImmutableEntry<Day2.Command, Integer>> commands = day2.parseCommands(INPUT_COMMANDS);
+        final List<ImmutablePair<Day2.Command, Integer>> commands = day2.parseCommands(INPUT_COMMANDS);
 
         // when
         final Integer horizontal = day2.calculateHorizontal(commands);
@@ -33,7 +33,7 @@ public class Day2Test {
         assertEquals(10, depth);
 
         // print result
-        final List<AbstractMap.SimpleImmutableEntry<Day2.Command, Integer>> fileCommands = day2.parseCommands(INPUT_FILE_COMMANDS);
+        final List<ImmutablePair<Day2.Command, Integer>> fileCommands = day2.parseCommands(INPUT_FILE_COMMANDS);
 
         final int solutionHorizontal =  day2.calculateHorizontal(fileCommands);
         final int solutionDepth =  day2.calculateDepth(fileCommands);
@@ -46,7 +46,7 @@ public class Day2Test {
     void partTwo() {
         // given
         final Day2 day2 = new Day2();
-        final List<AbstractMap.SimpleImmutableEntry<Day2.Command, Integer>> commands = day2.parseCommands(INPUT_COMMANDS);
+        final List<ImmutablePair<Day2.Command, Integer>> commands = day2.parseCommands(INPUT_COMMANDS);
 
         // when
         final Integer depth = day2.calculateDepthWithAim(commands);
@@ -55,7 +55,7 @@ public class Day2Test {
         assertEquals(60, depth);
 
         // solution
-        final List<AbstractMap.SimpleImmutableEntry<Day2.Command, Integer>> fileCommands = day2.parseCommands(INPUT_FILE_COMMANDS);
+        final List<ImmutablePair<Day2.Command, Integer>> fileCommands = day2.parseCommands(INPUT_FILE_COMMANDS);
 
         final int solutionHorizontal =  day2.calculateHorizontal(fileCommands);
         final int solutionDepth =  day2.calculateDepthWithAim(fileCommands);
