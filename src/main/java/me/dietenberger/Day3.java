@@ -9,7 +9,10 @@ import java.util.stream.IntStream;
 
 public class Day3 {
 
+    enum Quantity {MOST, LEAST,}
+
     public String getMostCommonBinaryPerPosition(final List<String> binaries) {
+        // all binaries have the same length, so we just grab the first one
         final int positions = binaries.get(0).length();
 
         final StringBuilder mostCommonBinary = new StringBuilder();
@@ -37,41 +40,34 @@ public class Day3 {
         return mostCommonBinary.toString();
     }
 
-    final String getBinaryByMostCommonValuePerPosition(final List<String> binaries) {
+    final String getBinaryByQuantityValuePerPosition(final List<String> binaries, final Quantity quantity) {
+        // all binaries have the same length, so we just grab the first one
         final int positions = binaries.get(0).length();
 
+        // we start with all binaries
         final List<String> binariesStore = new ArrayList<>(binaries);
+
+        // max amount of iterations is the amount of positions
         IntStream.range(0, positions).forEach(position -> {
+            // as soon as there is only 1 entry, we finish iterating
             if (binariesStore.size() == 1) {
                 return;
             }
 
+            // we need to know which is the most common binary
             final String mostCommonBinaries = getMostCommonBinaryPerPosition(binariesStore);
-            final List<String> mostCommonBinariesForPosition = binariesStore.stream()
-                    .filter(line -> line.charAt(position) == mostCommonBinaries.charAt(position))
+
+            // if we want to search for the least common one, we invert the binary
+            final String commonBinaries = quantity == Quantity.MOST ? mostCommonBinaries : invertBinary(mostCommonBinaries);
+
+            // now we filter for the most/least common binary
+            final List<String> binariesForPosition = binariesStore.stream()
+                    .filter(line -> line.charAt(position) == commonBinaries.charAt(position))
                     .collect(Collectors.toList());
+
+            // and save it within our store to use it for the next iteration
             binariesStore.clear();
-            binariesStore.addAll(mostCommonBinariesForPosition);
-        });
-        return binariesStore.get(0);
-    }
-
-    final String getBinaryByLeastCommonValuePerPosition(final List<String> binaries) {
-        final int positions = binaries.get(0).length();
-
-        final List<String> binariesStore = new ArrayList<>(binaries);
-        IntStream.range(0, positions).forEach(position -> {
-            if (binariesStore.size() == 1) {
-                return;
-            }
-
-            final String mostCommonBinaries = getMostCommonBinaryPerPosition(binariesStore);
-            final String leastCommonBinaries = invertBinary(mostCommonBinaries);
-            final List<String> leastCommonBinariesForPosition = binariesStore.stream()
-                    .filter(line -> line.charAt(position) == leastCommonBinaries.charAt(position))
-                    .collect(Collectors.toList());
-            binariesStore.clear();
-            binariesStore.addAll(leastCommonBinariesForPosition);
+            binariesStore.addAll(binariesForPosition);
         });
         return binariesStore.get(0);
     }

@@ -60,10 +60,10 @@ public class Day3Test {
         final Day3 day3 = new Day3();
 
         // when
-        final String mostCommonBinary = day3.getBinaryByMostCommonValuePerPosition(INPUT_BIANRY);
+        final String mostCommonBinary = day3.getBinaryByQuantityValuePerPosition(INPUT_BIANRY, Day3.Quantity.MOST);
         final int oxygenGeneratorRating = day3.parseBinary(mostCommonBinary);
 
-        final String leastCommonBinary = day3.getBinaryByLeastCommonValuePerPosition(INPUT_BIANRY);
+        final String leastCommonBinary = day3.getBinaryByQuantityValuePerPosition(INPUT_BIANRY, Day3.Quantity.LEAST);
         final int co2ScrubberRating = day3.parseBinary(leastCommonBinary);
 
         final int lifeSupportRating = oxygenGeneratorRating * co2ScrubberRating;
@@ -76,9 +76,9 @@ public class Day3Test {
         assertEquals(230, lifeSupportRating);
 
         // solution
-        final String mostCommonBinarySolution = day3.getBinaryByMostCommonValuePerPosition(INPUT_FILE_BINARY);
+        final String mostCommonBinarySolution = day3.getBinaryByQuantityValuePerPosition(INPUT_FILE_BINARY, Day3.Quantity.MOST);
         final int oxygenGeneratorRatingSolution = day3.parseBinary(mostCommonBinarySolution);
-        final String leastCommonBinarySolution = day3.getBinaryByLeastCommonValuePerPosition(INPUT_FILE_BINARY);
+        final String leastCommonBinarySolution = day3.getBinaryByQuantityValuePerPosition(INPUT_FILE_BINARY, Day3.Quantity.LEAST);
         final int co2ScrubberRatingSolution = day3.parseBinary(leastCommonBinarySolution);
 
         final int lifeSupportRatingSolution = oxygenGeneratorRatingSolution * co2ScrubberRatingSolution;
