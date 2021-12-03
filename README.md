@@ -13,3 +13,7 @@ https://adventofcode.com/2021/
 ## Day 2
 - Implementation: [src/main/java/me/dietenberger/Day2.java](src/main/java/me/dietenberger/Day2.java)
 - Test: [src/test/java/me/dietenberger/Day2Test.java](src/test/java/me/dietenberger/Day2Test.java)
+
+## Day 3
+- Implementation: [src/main/java/me/dietenberger/Day3.java](src/main/java/me/dietenberger/Day3.java)
+- Test: [src/test/java/me/dietenberger/Day3Test.java](src/test/java/me/dietenberger/Day3Test.java)
