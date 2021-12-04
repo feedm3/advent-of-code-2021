@@ -145,7 +145,7 @@ public class Day4 {
                 .filter(bingoNumberPair -> bingoNumberPair.getKey().isPresent())
                 .map(bingoNumberPair -> Pair.of(bingoNumberPair.getKey().get(), bingoNumberPair.getRight()))
                 .findFirst()
-                .get();
+                .orElseThrow();
     }
 
     public Pair<BingoField, Integer> getLastWinningBingoFiledWithWinningNumber(final List<BingoField> bingoFields, final List<Integer> numbers) {
