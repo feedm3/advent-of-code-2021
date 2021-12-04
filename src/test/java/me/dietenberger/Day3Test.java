@@ -7,7 +7,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Day3Test {
-    final List<String> INPUT_BIANRY = List.of(
+    final List<String> INPUT_BINARY = List.of(
             "00100",
             "11110",
             "10110",
@@ -29,7 +29,7 @@ public class Day3Test {
         final Day3 day3 = new Day3();
 
         // when
-        final String mostCommonBinariesPerPosition = day3.getMostCommonBinaryPerPosition(INPUT_BIANRY);
+        final String mostCommonBinariesPerPosition = day3.getMostCommonBinaryPerPosition(INPUT_BINARY);
         final int gammaRate = day3.parseBinary(mostCommonBinariesPerPosition);
 
         final String epsilonBinary = day3.invertBinary(mostCommonBinariesPerPosition);
@@ -60,10 +60,10 @@ public class Day3Test {
         final Day3 day3 = new Day3();
 
         // when
-        final String mostCommonBinary = day3.getBinaryByQuantityValuePerPosition(INPUT_BIANRY, Day3.Quantity.MOST);
+        final String mostCommonBinary = day3.getBinaryByQuantityValuePerPosition(INPUT_BINARY, Day3.Quantity.MOST);
         final int oxygenGeneratorRating = day3.parseBinary(mostCommonBinary);
 
-        final String leastCommonBinary = day3.getBinaryByQuantityValuePerPosition(INPUT_BIANRY, Day3.Quantity.LEAST);
+        final String leastCommonBinary = day3.getBinaryByQuantityValuePerPosition(INPUT_BINARY, Day3.Quantity.LEAST);
         final int co2ScrubberRating = day3.parseBinary(leastCommonBinary);
 
         final int lifeSupportRating = oxygenGeneratorRating * co2ScrubberRating;

@@ -16,6 +16,7 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testImplementation("com.google.truth:truth:1.1.3")
 }
 
 tasks.named<Test>("test") {
