@@ -60,9 +60,6 @@ public class Day5 {
                 .toList();
     }
 
-    /**
-     * Part 1: Only horizontal or diagonal
-     */
     public Long calculateCoordinateOverlaps(final List<ImmutablePair<Coordinate, Coordinate>> fromToCoordinates, final CalculationMode calculationMode) {
         final CoordinateSystem coordinateSystem = new CoordinateSystem();
 
