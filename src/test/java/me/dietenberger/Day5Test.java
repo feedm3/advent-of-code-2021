@@ -37,14 +37,14 @@ public class Day5Test {
         Truth.assertThat(fromToCoordinates.get(2).right.y()).isEqualTo(4);
 
         // when
-        final var overlaps = day5.calculateCoordinateOverlaps(fromToCoordinates);
+        final var overlaps = day5.calculateCoordinateOverlaps(fromToCoordinates, Day5.CalculationMode.HORIZONTAL_VERTICAL);
 
         // then
         Truth.assertThat(overlaps).isEqualTo(5);
 
         // solution
         final var fromToCoordinatesSolution = day5.parseFromToCoordinates(INPUT_FILE_COORDINATES);
-        final var overlapsSolution = day5.calculateCoordinateOverlaps(fromToCoordinatesSolution);
+        final var overlapsSolution = day5.calculateCoordinateOverlaps(fromToCoordinatesSolution, Day5.CalculationMode.HORIZONTAL_VERTICAL);
 
         System.out.println("Result Day 5 - Part 1: " + overlapsSolution);
     }
@@ -56,7 +56,7 @@ public class Day5Test {
 
         // when
         final var fromToCoordinates = day5.parseFromToCoordinates(INPUT_COORDINATES);
-        final var overlaps = day5.calculateCoordinateOverlapsDiagonal(fromToCoordinates);
+        final var overlaps = day5.calculateCoordinateOverlaps(fromToCoordinates, Day5.CalculationMode.HORIZONTAL_VERTICAL_DIAGONAL);
 
         // then
         Truth.assertThat(overlaps).isEqualTo(12);
@@ -64,7 +64,7 @@ public class Day5Test {
 
         // solution
         final var fromToCoordinatesSolution = day5.parseFromToCoordinates(INPUT_FILE_COORDINATES);
-        final var overlapsSolution = day5.calculateCoordinateOverlapsDiagonal(fromToCoordinatesSolution);
+        final var overlapsSolution = day5.calculateCoordinateOverlaps(fromToCoordinatesSolution, Day5.CalculationMode.HORIZONTAL_VERTICAL_DIAGONAL);
 
         System.out.println("Result Day 5 - Part 2: " + overlapsSolution);
     }
