@@ -67,64 +67,68 @@ public class Day5 {
             var from = fromToCoordinate.getLeft();
             var to = fromToCoordinate.getRight();
 
-            // for part 1, we ignore from to coordinates where x and y is not equal
-            if (calculationMode == CalculationMode.HORIZONTAL_VERTICAL_DIAGONAL && isDiagonal45Degrees(from, to)) {
-                if (from.x() < to.x()) {
-                    // from left to right
-                    int round = 0;
-                    for (int fromX = from.x(); fromX <= to.x(); fromX++) {
-                        if (from.y() < to.y()) {
-                            // from up to down
-                            coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, from.y() + round));
-                        } else {
-                            // from down to up
-                            coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, from.y() - round));
-                        }
-                        round++;
-                    }
-                } else if (from.x() > to.x()) {
-                    // from right to left
-                    int round = 0;
-                    for (int fromX = from.x(); fromX >= to.x(); fromX--) {
-                        if (from.y() < to.y()) {
-                            // from up to down
-                            coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, from.y() + round));
-                        } else {
-                            // from down to up
-                            coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, from.y() - round));
-                        }
-                        round++;
-                    }
-                }
-                return;
-            }
-
-            // for part 1, we ignore from to coordinates where x and y is not equal
-            if (from.x() != to.x() && from.y() != to.y()) {
-                return;
-            }
-
-            // if x is different, the Y values both from "from" and "to" are equal
             if (from.x() < to.x()) {
-                for (int fromX = from.x(); fromX <= to.x(); fromX++) {
-                    coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, to.y()));
+                // from left to right
+                // horizontal
+                if (from.y() == to.y()) {
+                    for (int fromX = from.x(); fromX <= to.x(); fromX++) {
+                        coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, from.y()));
+                    }
                 }
-            }
-            if (from.x() > to.x()) {
-                for (int fromX = from.x(); fromX >= to.x(); fromX--) {
-                    coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, to.y()));
-                }
-            }
 
-            // if y is different, the X values both from "from" and "to" are equal
-            if (from.y() < to.y()) {
-                for (int fromY = from.y(); fromY <= to.y(); fromY++) {
-                    coordinateSystem.increaseCoordinateOverlap(new Coordinate(from.x(), fromY));
+                if (calculationMode != CalculationMode.HORIZONTAL_VERTICAL_DIAGONAL || !isDiagonal45Degrees(from, to)) {
+                    return;
                 }
-            }
-            if (from.y() > to.y()) {
-                for (int fromY = from.y(); fromY >= to.y(); fromY--) {
-                    coordinateSystem.increaseCoordinateOverlap(new Coordinate(from.x(), fromY));
+
+                // diagonal
+                int round = 0;
+                for (int fromX = from.x(); fromX <= to.x(); fromX++) {
+                    if (from.y() < to.y()) {
+                        // from up to down
+                        coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, from.y() + round));
+                    } else {
+                        // from down to up
+                        coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, from.y() - round));
+                    }
+                    round++;
+                }
+            } else if (from.x() > to.x()) {
+                // from right to left
+                // horizontal
+                if (from.y() == to.y()) {
+                    for (int fromX = from.x(); fromX >= to.x(); fromX--) {
+                        coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, from.y()));
+                    }
+                }
+
+                if (calculationMode != CalculationMode.HORIZONTAL_VERTICAL_DIAGONAL || !isDiagonal45Degrees(from, to)) {
+                    return;
+                }
+
+                // diagonal
+                int round = 0;
+                for (int fromX = from.x(); fromX >= to.x(); fromX--) {
+                    if (from.y() < to.y()) {
+                        // from up to down
+                        coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, from.y() + round));
+                    } else {
+                        // from down to up
+                        coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, from.y() - round));
+                    }
+                    round++;
+                }
+            } else {
+                // vertical
+                if (from.y() < to.y()) {
+                    for (int fromY = from.y(); fromY <= to.y(); fromY++) {
+                        // from up to down
+                        coordinateSystem.increaseCoordinateOverlap(new Coordinate(from.x(), fromY));
+                    }
+                } else if (from.y() > to.y()) {
+                    for (int fromY = from.y(); fromY >= to.y(); fromY--) {
+                        // from down to up
+                        coordinateSystem.increaseCoordinateOverlap(new Coordinate(from.x(), fromY));
+                    }
                 }
             }
         });
