@@ -21,3 +21,7 @@ https://adventofcode.com/2021/
 ## Day 4
 - Implementation: [src/main/java/me/dietenberger/Day4.java](src/main/java/me/dietenberger/Day4.java)
 - Test: [src/test/java/me/dietenberger/Day4Test.java](src/test/java/me/dietenberger/Day4Test.java)
+
+## Day 5
+- Implementation: [src/main/java/me/dietenberger/Day5.java](src/main/java/me/dietenberger/Day5.java)
+- Test: [src/test/java/me/dietenberger/Day5Test.java](src/test/java/me/dietenberger/Day5Test.java)
