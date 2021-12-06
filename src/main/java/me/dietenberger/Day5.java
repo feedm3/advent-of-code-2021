@@ -55,6 +55,10 @@ public class Day5 {
                 .toList();
     }
 
+    /**
+     * Part 1: Only horizontal or diagonal
+     *
+     */
     public Long calculateCoordinateOverlaps(final List<ImmutablePair<Coordinate, Coordinate>> fromToCoordinates) {
         final CoordinateSystem coordinateSystem = new CoordinateSystem();
 
@@ -95,4 +99,88 @@ public class Day5 {
         return coordinateSystem.getCoordinateOverlaps(2);
     }
 
+
+    /**
+     * Part 2: Only horizontal or diagonal or 45 degrees
+     *
+     */
+    public Long calculateCoordinateOverlapsDiagonal(final List<ImmutablePair<Coordinate, Coordinate>> fromToCoordinates) {
+        final CoordinateSystem coordinateSystem = new CoordinateSystem();
+
+        fromToCoordinates.forEach(fromToCoordinate -> {
+            var from = fromToCoordinate.getLeft();
+            var to = fromToCoordinate.getRight();
+
+            // for part 1, we ignore from to coordinates where x and y is not equal
+            if (isDiagonal45Degrees(from, to)) {
+                if (from.x() < to.x()) {
+                    // from left to right
+                    int round = 0;
+                    for (int fromX = from.x(); fromX <= to.x(); fromX++) {
+                        if (from.y() < to.y()) {
+                            // from up to down
+                            coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, from.y() + round));
+                        } else {
+                            // from down to up
+                            coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, from.y() - round));
+                        }
+                        round++;
+                    }
+                } else {
+                    // from right to left
+                    int round = 0;
+                    for (int fromX = from.x(); fromX >= to.x(); fromX--) {
+                        if (from.y() < to.y()) {
+                            // from up to down
+                            coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, from.y() + round));
+                        } else {
+                            // from down to up
+                            coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, from.y() - round));
+                        }
+                        round++;
+                    }
+                }
+                return;
+            }
+
+            if (from.x() != to.x() && from.y() != to.y()) {
+                return;
+            }
+
+            // if x is different, the Y values both from "from" and "to" are equal
+            if (from.x() < to.x()) {
+                for (int fromX = from.x(); fromX <= to.x(); fromX++) {
+                    coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, to.y()));
+                }
+            }
+            if (from.x() > to.x()) {
+                for (int fromX = from.x(); fromX >= to.x(); fromX--) {
+                    coordinateSystem.increaseCoordinateOverlap(new Coordinate(fromX, to.y()));
+                }
+            }
+
+            // if y is different, the X values both from "from" and "to" are equal
+            if (from.y() < to.y()) {
+                for (int fromY = from.y(); fromY <= to.y(); fromY++) {
+                    coordinateSystem.increaseCoordinateOverlap(new Coordinate(from.x(), fromY));
+                }
+            }
+            if (from.y() > to.y()) {
+                for (int fromY = from.y(); fromY >= to.y(); fromY--) {
+                    coordinateSystem.increaseCoordinateOverlap(new Coordinate(from.x(), fromY));
+                }
+            }
+        });
+
+        return coordinateSystem.getCoordinateOverlaps(2);
+    }
+
+    /**
+     * Check if both points are on a diagonal line of exactly 45 degrees.
+     *
+     *  v
+     */
+    private boolean isDiagonal45Degrees(final Coordinate from, final Coordinate to) {
+        return Math.abs(from.x() - to.x()) == Math.abs(from.y() - to.y());
+    }
 }

@@ -52,8 +52,20 @@ public class Day5Test {
     @Test
     void partTwo() {
         // given
+        final Day5 day5 = new Day5();
+
+        // when
+        final var fromToCoordinates = day5.parseFromToCoordinates(INPUT_COORDINATES);
+        final var overlaps = day5.calculateCoordinateOverlapsDiagonal(fromToCoordinates);
+
+        // then
+        Truth.assertThat(overlaps).isEqualTo(12);
 
 
-        System.out.println("Result Day 5 - Part 2: ");
+        // solution
+        final var fromToCoordinatesSolution = day5.parseFromToCoordinates(INPUT_FILE_COORDINATES);
+        final var overlapsSolution = day5.calculateCoordinateOverlapsDiagonal(fromToCoordinatesSolution);
+
+        System.out.println("Result Day 5 - Part 2: " + overlapsSolution);
     }
 }
