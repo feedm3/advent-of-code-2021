@@ -4,7 +4,6 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Day3 {
@@ -64,7 +63,7 @@ public class Day3 {
                     // now we filter for the most/least common binary
                     final List<String> binariesForPosition = binariesStore.stream()
                             .filter(line -> line.charAt(position) == commonBinaries.charAt(position))
-                            .collect(Collectors.toList());
+                            .toList();
 
                     // and save it within our store to use it for the next iteration
                     binariesStore.clear();

@@ -5,7 +5,6 @@ import org.apache.commons.lang3.tuple.ImmutablePair;
 
 import java.util.List;
 import java.util.Locale;
-import java.util.stream.Collectors;
 
 
 public class Day2 {
@@ -57,6 +56,6 @@ public class Day2 {
                         Enums.getIfPresent(Command.class, splitLine[0].toUpperCase(Locale.ROOT)).get(),
                         Integer.parseInt(splitLine[1])
                 ))
-                .collect(Collectors.toList());
+                .toList();
     }
 }

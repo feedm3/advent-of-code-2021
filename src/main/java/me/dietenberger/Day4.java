@@ -10,7 +10,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 class BingoField {
@@ -24,10 +23,10 @@ class BingoField {
      * Create a new Bingo Field by parsing the String representation of it.
      */
     public static BingoField of(final List<String> lines) {
-        final BingoField bingoField = new BingoField();
+        final var bingoField = new BingoField();
 
-        final AtomicInteger rowPosition = new AtomicInteger(0);
-        final AtomicInteger columnPosition = new AtomicInteger(0);
+        final var rowPosition = new AtomicInteger(0);
+        final var columnPosition = new AtomicInteger(0);
 
         lines.forEach(line -> {
             // each row we start at column one
@@ -42,7 +41,7 @@ class BingoField {
                             bingoField.entries.add(Lists.newArrayList());
                         }
 
-                        final List<Pair<Integer, Boolean>> row = bingoField.entries.get(rowPosition.get());
+                        final var row = bingoField.entries.get(rowPosition.get());
 
                         // we add one entry after another for each row
                         row.add(MutablePair.of(number, false));
@@ -71,11 +70,11 @@ class BingoField {
 
     public Optional<List<Integer>> hasWinningColumn() {
         // we transpose the list to be able to check them the same way as the row
-        final List<List<Pair<Integer, Boolean>>> transposedEntries = IntStream.range(0, this.entries.get(0).size())
+        final var transposedEntries = IntStream.range(0, this.entries.get(0).size())
                 .mapToObj(i -> this.entries.stream()
                         .map(l -> l.get(i))
-                        .collect(Collectors.toList()))
-                .collect(Collectors.toList());
+                        .toList())
+                .toList();
 
         return hasWinningRow(transposedEntries);
     }
@@ -93,7 +92,7 @@ class BingoField {
                 .map(row -> row.stream()
                         .filter(Pair::getValue)
                         .map(Pair::getKey)
-                        .collect(Collectors.toList()))
+                        .toList())
                 .filter(correctNumbersPerRow -> correctNumbersPerRow.size() == 5)
                 .findFirst();
     }
@@ -104,14 +103,14 @@ public class Day4 {
     public List<Integer> createBingoNumbers(final String numbers) {
         return Arrays.stream(numbers.split(","))
                 .map(Integer::parseInt)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public List<BingoField> createBingoFields(final List<String> numberLines) {
         // we skip the draw numbers
-        final List<String> allBingoFieldLines = numberLines.stream()
+        final var allBingoFieldLines = numberLines.stream()
                 .skip(1)
-                .collect(Collectors.toList());
+                .toList();
 
         final List<BingoField> bingoFields = Lists.newArrayList();
 
@@ -125,7 +124,7 @@ public class Day4 {
 
             // at 5 lines, the bingo field is complete
             if (oneBingoFieldLines.size() == 5) {
-                final BingoField bingoField = BingoField.of(oneBingoFieldLines);
+                final var bingoField = BingoField.of(oneBingoFieldLines);
                 bingoFields.add(bingoField);
 
                 oneBingoFieldLines.clear();
@@ -161,7 +160,7 @@ public class Day4 {
 
             setNumberOnBingoFields(number, runningBingoFields);
 
-            final List<BingoField> newWinningBingoField = getWinningBingoFields(runningBingoFields);
+            final var newWinningBingoField = getWinningBingoFields(runningBingoFields);
 
             if (newWinningBingoField.size() > 0) {
                 newWinningBingoField.forEach(field -> {
@@ -190,6 +189,6 @@ public class Day4 {
     private List<BingoField> getWinningBingoFields(final List<BingoField> bingoFields) {
         return bingoFields.stream()
                 .filter(bingoField -> bingoField.hasWinningColumn().isPresent() || bingoField.hasWinningRow().isPresent())
-                .collect(Collectors.toList());
+                .toList();
     }
 }
