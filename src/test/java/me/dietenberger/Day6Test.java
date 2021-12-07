@@ -17,19 +17,35 @@ public class Day6Test {
         final Day6 day6 = new Day6();
 
         // when
-        var fishAges = day6.calculateFishAfterDays(INTRO_FISH_AGES, 18);
+        var amountOfFish = day6.calculateAmountOfFishAfterDays(INTRO_FISH_AGES, 18);
 
         // then
-        assertThat(fishAges.size()).isEqualTo(26);
+        assertThat(amountOfFish).isEqualTo(26);
 
         // when
-        var fishAgesAfterEighty = day6.calculateFishAfterDays(INTRO_FISH_AGES, 80);
+        var largerAmountOfFish = day6.calculateAmountOfFishAfterDays(INTRO_FISH_AGES, 80);
 
         // then
-        assertThat(fishAgesAfterEighty.size()).isEqualTo(5934);
+        assertThat(largerAmountOfFish).isEqualTo(5934);
 
         // solution
-        var fishAgesSolution = day6.calculateFishAfterDays(INPUT_FILE_FISH_AGES, 80);
-        System.out.println("Result Day 6 - Part 1: " + fishAgesSolution.size());
+        var fishAgesSolution = day6.calculateAmountOfFishAfterDays(INPUT_FILE_FISH_AGES, 80);
+        System.out.println("Result Day 6 - Part 1: " + fishAgesSolution);
+    }
+
+    @Test
+    void partTwo() {
+        // given
+        final Day6 day6 = new Day6();
+
+        // when
+        var amountOfFish = day6.calculateAmountOfFishAfterDays(INTRO_FISH_AGES, 256);
+
+        // then
+        assertThat(amountOfFish).isEqualTo(26984457539L);
+
+        // solution
+        var fishAgesSolution = day6.calculateAmountOfFishAfterDays(INPUT_FILE_FISH_AGES, 256);
+        System.out.println("Result Day 6 - Part 2: " + fishAgesSolution);
     }
 }
