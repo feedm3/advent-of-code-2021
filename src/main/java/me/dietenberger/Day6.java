@@ -10,9 +10,7 @@ public class Day6 {
         final var fishPerAge = this.createEmptyList();
 
         // add the initial amount of fishes per age
-        fishAgesInput.forEach(age -> {
-            fishPerAge.set(age, fishPerAge.get(age) + 1);
-        });
+        fishAgesInput.forEach(age -> fishPerAge.set(age, fishPerAge.get(age) + 1));
 
         for (int day = 0; day < daysToAge; day++) {
             // we create a copy to ignore fishes that are added during the day

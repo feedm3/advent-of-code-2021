@@ -55,13 +55,11 @@ class BingoField {
     }
 
     public void setNumber(final Integer number) {
-        this.entries.forEach(row -> {
-            row.forEach(entry -> {
-                if (entry.getKey().equals(number)) {
-                    entry.setValue(true);
-                }
-            });
-        });
+        this.entries.forEach(row -> row.forEach(entry -> {
+            if (entry.getKey().equals(number)) {
+                entry.setValue(true);
+            }
+        }));
     }
 
     public Optional<List<Integer>> hasWinningRow() {
@@ -175,9 +173,7 @@ public class Day4 {
 
 
     private void setNumberOnBingoFields(final Integer number, final List<BingoField> bingoFields) {
-        bingoFields.forEach(bingoField -> {
-            bingoField.setNumber(number);
-        });
+        bingoFields.forEach(bingoField -> bingoField.setNumber(number));
     }
 
     private Optional<BingoField> getWinningBingoField(final List<BingoField> bingoFields) {

@@ -13,7 +13,7 @@ record Coordinate(int x, int y) {
 class CoordinateSystem {
 
     // coordinate system that stores the amount of overlaps per coordinate
-    public List<List<Integer>> coordinateOverlaps = Lists.newArrayList();
+    public final List<List<Integer>> coordinateOverlaps = Lists.newArrayList();
 
     public void increaseCoordinateOverlap(final Coordinate coordinate) {
         // make sure the coordinate system has enough X lists
