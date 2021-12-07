@@ -30,7 +30,7 @@ public class Day4Test {
             "22 11 13  6  5",
             "2  0 12  3  7"
     );
-    final List<String> INPUT_FILE_BINGO = FileLoader.getLinesFromInput("day-4-input.txt");
+    final List<String> INPUT_FILE_BINGO = FileLoader.getLines("day-4-input.txt");
 
     @Test
     void bingoField() {

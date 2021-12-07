@@ -21,7 +21,7 @@ public class Day3Test {
             "00010",
             "01010"
     );
-    final List<String> INPUT_FILE_BINARY = FileLoader.getLinesFromInput("day-3-input.txt");
+    final List<String> INPUT_FILE_BINARY = FileLoader.getLines("day-3-input.txt");
 
     @Test
     void partOne() {

@@ -16,7 +16,7 @@ public class Day2Test {
             "down 8",
             "forward 2"
     );
-    final List<String> INPUT_FILE_COMMANDS = FileLoader.getLinesFromInput("day-2-input.txt");
+    final List<String> INPUT_FILE_COMMANDS = FileLoader.getLines("day-2-input.txt");
 
     @Test
     void partOne() {

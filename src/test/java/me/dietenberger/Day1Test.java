@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Day1Test {
     final List<Integer> INTRO_NUMBERS = List.of(199, 200, 208, 210, 200, 207, 240, 269, 260, 263);
-    final List<Integer> INPUT_FILE_NUMBERS = FileLoader.getNumbersFromInput("day-1-input.txt");
+    final List<Integer> INPUT_FILE_NUMBERS = FileLoader.getLineSeparatedNumbers("day-1-input.txt");
 
     @Test
     void partOne() {

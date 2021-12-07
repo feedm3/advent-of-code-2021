@@ -1,7 +1,5 @@
 package me.dietenberger;
 
-import com.google.common.truth.Truth;
-import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -21,7 +19,7 @@ public class Day5Test {
             "0,0 -> 8,8",
             "5,5 -> 8,2"
     );
-    final List<String> INPUT_FILE_COORDINATES = FileLoader.getLinesFromInput("day-5-input.txt");
+    final List<String> INPUT_FILE_COORDINATES = FileLoader.getLines("day-5-input.txt");
 
     @Test
     void partOne() {
