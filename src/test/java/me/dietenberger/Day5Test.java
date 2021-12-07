@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static com.google.common.truth.Truth.*;
+
 public class Day5Test {
     final List<String> INPUT_COORDINATES = List.of(
             "0,9 -> 5,9",
@@ -30,17 +32,17 @@ public class Day5Test {
         final var fromToCoordinates = day5.parseFromToCoordinates(INPUT_COORDINATES);
 
         // then
-        Truth.assertThat(fromToCoordinates.size()).isEqualTo(10);
-        Truth.assertThat(fromToCoordinates.get(0).left.x()).isEqualTo(0);
-        Truth.assertThat(fromToCoordinates.get(0).left.y()).isEqualTo(9);
-        Truth.assertThat(fromToCoordinates.get(2).right.x()).isEqualTo(3);
-        Truth.assertThat(fromToCoordinates.get(2).right.y()).isEqualTo(4);
+        assertThat(fromToCoordinates.size()).isEqualTo(10);
+        assertThat(fromToCoordinates.get(0).left.x()).isEqualTo(0);
+        assertThat(fromToCoordinates.get(0).left.y()).isEqualTo(9);
+        assertThat(fromToCoordinates.get(2).right.x()).isEqualTo(3);
+        assertThat(fromToCoordinates.get(2).right.y()).isEqualTo(4);
 
         // when
         final var overlaps = day5.calculateCoordinateOverlaps(fromToCoordinates, Day5.CalculationMode.HORIZONTAL_VERTICAL);
 
         // then
-        Truth.assertThat(overlaps).isEqualTo(5);
+        assertThat(overlaps).isEqualTo(5);
 
         // solution
         final var fromToCoordinatesSolution = day5.parseFromToCoordinates(INPUT_FILE_COORDINATES);
@@ -59,7 +61,7 @@ public class Day5Test {
         final var overlaps = day5.calculateCoordinateOverlaps(fromToCoordinates, Day5.CalculationMode.HORIZONTAL_VERTICAL_DIAGONAL);
 
         // then
-        Truth.assertThat(overlaps).isEqualTo(12);
+        assertThat(overlaps).isEqualTo(12);
 
 
         // solution
