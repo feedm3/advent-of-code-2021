@@ -39,6 +39,7 @@ public class Day7Test {
         assertThat(distanceCost).isEqualTo(168);
 
         // solution
+        // Note: The solution is work if you round the average in the calculateDistanceCostWithIncreasingCosts function!
         var distanceCostSolution = day7.calculateDistanceCostWithIncreasingCosts(INPUT_FILE_HORIZONTAL_POSITIONS);
         System.out.println("Result Day 7 - Part 2: " + distanceCostSolution);
     }

@@ -23,6 +23,8 @@ public class Day7 {
                 .mapToInt(i -> i)
                 .average()
                 .getAsDouble();
+
+        // Note: Only works with the example data. To get the solution, remove this line and use the average directly
         final Integer roundedAverage = (int) Math.round(average);
 
         var totalDistanceCosts = 0;
