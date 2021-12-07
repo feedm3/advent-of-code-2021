@@ -7,7 +7,7 @@ import java.util.List;
 public class Day6 {
 
     public Long calculateAmountOfFishAfterDays(final List<Integer> fishAgesInput, final Integer daysToAge) {
-        final List<Long> fishPerAge = this.createEmptyList();
+        final var fishPerAge = this.createEmptyList();
 
         // add the initial amount of fishes per age
         fishAgesInput.forEach(age -> {
@@ -16,7 +16,7 @@ public class Day6 {
 
         for (int day = 0; day < daysToAge; day++) {
             // we create a copy to ignore fishes that are added during the day
-            final List<Long> fishPerAgePerDay = this.createEmptyList();
+            final var fishPerAgePerDay = this.createEmptyList();
 
             // we calc backwards to add the new fish at the end
             for (int nextAge = 7; nextAge >= 0; nextAge--) {
